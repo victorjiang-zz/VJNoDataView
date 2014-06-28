@@ -22,6 +22,8 @@
 		EC7A23A8195E5CA40030E002 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7A2387195E5CA30030E002 /* UIKit.framework */; };
 		EC7A23B0195E5CA40030E002 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC7A23AE195E5CA40030E002 /* InfoPlist.strings */; };
 		EC7A23B2195E5CA40030E002 /* VJNoDataViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7A23B1195E5CA40030E002 /* VJNoDataViewTests.m */; };
+		EC7A23C8195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7A23C5195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.m */; };
+		EC7A23C9195EF3AE0030E002 /* UIViewController+VJNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7A23C7195EF3AE0030E002 /* UIViewController+VJNoDataView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		EC7A23AD195E5CA40030E002 /* VJNoDataViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VJNoDataViewTests-Info.plist"; sourceTree = "<group>"; };
 		EC7A23AF195E5CA40030E002 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EC7A23B1195E5CA40030E002 /* VJNoDataViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VJNoDataViewTests.m; sourceTree = "<group>"; };
+		EC7A23C4195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "VJNoDataView/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		EC7A23C5195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "VJNoDataView/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		EC7A23C6195EF3AE0030E002 /* UIViewController+VJNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+VJNoDataView.h"; path = "VJNoDataView/UIViewController+VJNoDataView.h"; sourceTree = "<group>"; };
+		EC7A23C7195EF3AE0030E002 /* UIViewController+VJNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+VJNoDataView.m"; path = "VJNoDataView/UIViewController+VJNoDataView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				EC7A2398195E5CA30030E002 /* Main_iPad.storyboard */,
 				EC7A239B195E5CA30030E002 /* VJViewController.h */,
 				EC7A239C195E5CA30030E002 /* VJViewController.m */,
+				EC7A23C4195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.h */,
+				EC7A23C5195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.m */,
+				EC7A23C6195EF3AE0030E002 /* UIViewController+VJNoDataView.h */,
+				EC7A23C7195EF3AE0030E002 /* UIViewController+VJNoDataView.m */,
 				EC7A239E195E5CA30030E002 /* Images.xcassets */,
 				EC7A238A195E5CA30030E002 /* Supporting Files */,
 			);
@@ -254,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC7A23C8195EF3AE0030E002 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				EC7A2394195E5CA30030E002 /* VJAppDelegate.m in Sources */,
+				EC7A23C9195EF3AE0030E002 /* UIViewController+VJNoDataView.m in Sources */,
 				EC7A239D195E5CA30030E002 /* VJViewController.m in Sources */,
 				EC7A2390195E5CA30030E002 /* main.m in Sources */,
 			);
