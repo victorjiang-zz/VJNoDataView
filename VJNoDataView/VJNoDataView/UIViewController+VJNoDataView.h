@@ -32,7 +32,7 @@
 //
 //  功能:
 //
-//  NoDataView添加下拉刷新,重新加载
+//  NoDataView重新加载
 //
 //  Created by Victor Jiang on 6/28/14.
 //  Copyright (c) 2014 Victor Jiang. All rights reserved.
@@ -40,36 +40,55 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  无数据类型
+ */
+typedef NS_ENUM(NSUInteger, VJNoDataType){
+    /**
+     *  正常，不显示无数据view
+     */
+    VJNoDataType_Normal,
+    /**
+     *  正在加载页
+     */
+    VJNoDataType_Loading,
+    /**
+     *  无数据页，获取数据为空
+     */
+    VJNoDataType_NoData,
+    /**
+     *  网络异常页
+     */
+    VJNoDataType_NetworkError
+};
+
 @interface UIViewController (VJNoDataView)
 
 /**
- *  设置自定义的NoDataView,
- *  add在scrollView上,首先通过该方法进行初始化
+ *  是否使能NoDataView，缺省使能
  *
- *  @param noDataView 无数据页面,可以是获取不到数据的情况;或者无网络时的提示页面
+ *  @param enable 使能
  */
-- (void)setCustomNoDataView:(UIView *)noDataView;
+- (void)vj_setNoDataEnable:(BOOL)enable;
 
 /**
- *  使能下拉刷新
+ *  设置当前类型
  *
- *  @param enabled 是否使能,缺省使能下拉刷新
+ *  @param noDataType 类型
  */
-- (void)setPullToRefreshEnabled:(BOOL)enabled;
+- (void)vj_setNoDataType:(VJNoDataType)noDataType;
 
 /**
- *  隐藏/显示NoDataView
- *  这里实际操作的是scrollView
+ *  设置不同类型显示的view，有默认的view
  *
- *  @param hidden 是否隐藏,否则显示
+ *  @param noDataView view
+ *  @param noDataType 类型
  */
-- (void)setNoDataViewHidden:(BOOL)hidden;
+- (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType;
 
 /**
  *  重新加载
- *  比如下拉刷新的时候会触发该方法,
- *  该方法必须在自定义类中重写
  */
-- (void)reloadData;
+- (void)vj_reloadData;
 
 @end

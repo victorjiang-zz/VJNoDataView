@@ -23,40 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    //初始化自定义view
-    //1.noDataView
-    self.noDataView = [[UIView alloc] initWithFrame:self.view.bounds];
-    UIImageView *noDataImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 320, 393)];
-    noDataImageView.image = [UIImage imageNamed:@"nodata"];
-    [self.noDataView addSubview:noDataImageView];
-    self.noDataView.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1];
     
-    //2.noNetPullView
-    self.noNetPullView = [[UIView alloc] initWithFrame:self.view.bounds];
-    UIImageView *noNetPullImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 320, 349)];
-    noNetPullImageView.image = [UIImage imageNamed:@"nonet_pull"];
-    [self.noNetPullView addSubview:noNetPullImageView];
-    self.noNetPullView.backgroundColor = [UIColor colorWithRed:252/255.0 green:249/255.0 blue:243/255.0 alpha:1];
-    
-    //3.noNetButtonView
-    self.noNetButtonView = [[UIView alloc] initWithFrame:self.view.bounds];
-    UIImageView *noNetButtonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 320, 348)];
-    noNetButtonImageView.image = [UIImage imageNamed:@"nonet_btn"];
-    [self.noNetButtonView addSubview:noNetButtonImageView];
-    self.noNetButtonView.backgroundColor = [UIColor colorWithRed:227/255.0 green:230/255.0 blue:235/255.0 alpha:1];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(96, 266, 116, 32);
-    button.backgroundColor = [UIColor clearColor];
-    [self.noNetButtonView addSubview:button];
-    
-    //设置NoDataView
-    [self setCustomNoDataView:self.noDataView];
-    [self setPullToRefreshEnabled:NO];
-    
-    //获取数据
-    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,39 +34,32 @@
 //    UITableViewController
 }
 
-- (void)reloadData
-{
-    NSLog(@"reload data at %s", __PRETTY_FUNCTION__);
+- (IBAction)loadingButtonPressed:(id)sender {
+    //no data
+    [self vj_setNoDataType:VJNoDataType_Loading];
     
-    [self performSelector:@selector(setNoDataViewHide:) withObject:[NSNumber numberWithBool:YES] afterDelay:2.0f];
+    [self performSelector:@selector(backToNormal) withObject:nil afterDelay:3];
 }
 
-- (void)setNoDataViewHide:(NSNumber *)hide
+- (void)backToNormal
 {
-    [self setNoDataViewHidden:[hide boolValue]];
+    [self vj_setNoDataType:VJNoDataType_Normal];
 }
-
 
 - (IBAction)noDataButtonPressed:(id)sender {
-    //no data
-    [self setCustomNoDataView:self.noDataView];
-    [self setNoDataViewHidden:NO];
-    [self setPullToRefreshEnabled:YES];
-}
-
-
-- (IBAction)noNetButtonPressed:(id)sender {
     //pull
-    [self setCustomNoDataView:self.noNetPullView];
-    [self setNoDataViewHidden:NO];
-    [self setPullToRefreshEnabled:YES];
+    [self vj_setNoDataType:VJNoDataType_NoData];
 }
 
-- (IBAction)noNetBtnPressed:(id)sender {
+- (IBAction)networkErrorPressed:(id)sender {
     //button
-    [self setCustomNoDataView:self.noNetButtonView];
-    [self setNoDataViewHidden:NO];
-    [self setPullToRefreshEnabled:NO];
+    [self vj_setNoDataType:VJNoDataType_NetworkError];
+}
+
+- (void)vj_reloadData
+{
+    NSLog(@"reload data at %s", __PRETTY_FUNCTION__);
+    [self loadingButtonPressed:nil];
 }
 
 @end
