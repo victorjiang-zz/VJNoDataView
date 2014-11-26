@@ -11,9 +11,7 @@
 
 @interface VJViewController ()
 
-@property (nonatomic, strong) UIView *noDataView;
-@property (nonatomic, strong) UIView *noNetPullView;
-@property (nonatomic, strong) UIView *noNetButtonView;
+@property (nonatomic, strong) VJCustomNoDataView *customNoDataView;
 
 @end
 
@@ -25,11 +23,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     __weak typeof(self) weakSelf = self;
-    VJCustomNoDataView *view = [[[NSBundle mainBundle] loadNibNamed:@"VJCustomNoDataView" owner:nil options:nil] objectAtIndex:0];
-    view.refreshBlock = ^void(){
+    self.customNoDataView = [[[NSBundle mainBundle] loadNibNamed:@"VJCustomNoDataView" owner:nil options:nil] objectAtIndex:0];
+    self.customNoDataView.refreshBlock = ^void(){
         [weakSelf vj_reloadData];
     };
-    [self vj_setNoDataView:view forNoDataType:VJNoDataType_NetworkError];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +41,7 @@
     //no data
     [self vj_setNoDataType:VJNoDataType_Loading];
     
-    [self performSelector:@selector(backToNormal) withObject:nil afterDelay:3];
+    [self performSelector:@selector(backToNormal) withObject:nil afterDelay:2];
 }
 
 - (void)backToNormal
@@ -66,6 +63,17 @@
 {
     NSLog(@"reload data at %s", __PRETTY_FUNCTION__);
     [self loadingButtonPressed:nil];
+}
+
+- (IBAction)enableSwitch:(id)sender {
+    UISwitch *sw = (UISwitch *)sender;
+    [self vj_setNoDataEnable:sw.on];
+}
+
+
+- (IBAction)customNoDataViewSwitch:(id)sender {
+    UISwitch *sw = (UISwitch *)sender;
+    [self vj_setNoDataView:sw.on?self.customNoDataView:nil forNoDataType:VJNoDataType_NetworkError];
 }
 
 @end

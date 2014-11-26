@@ -2,41 +2,41 @@
 //  UIViewController+VJNoDataView.h
 //  VJNoDataView
 //
-//  问题:
+//  issue:
+//
+//  we often use storyboard or xib files to creat views,
+//  many controls have their default value, et. UILabel's default text is "Label"
+//
+//  there are also many network requests in app
+//  sometimes the request is slow, when the request is loading, or the request is failed
+//  these controls shown with default value, not our expect data, unfriendly!
+//
+//  there are three types need us to handle
 //
 //  1.
-//  项目中我们经常会用网络请求数据来绘制页面
-//  而有时候网络请求较慢,甚至请求失败
-//
-//  又因为我们几乎都是通过xib文件来拖控件到界面上
-//  这些控件都有其缺省值,比如"UILabel"控件的缺省值是"label"
-//
-//  所以网络请求较慢,或者失败的情况下会看到控件的缺省值,界面不友好,不美观
-//
+//  loading
 //
 //  2.
-//  无网络的情况时,显示一个无网络的提示页面
-//  此时页面上会有一个"重新加载"的按钮
-//
+//  network error
 //
 //  3.
-//  数据为空时,显示一个无数据的提示页面
+//  without any data
 //
 //
 //
 //
-//  解决办法:
+//  solution:
 //
-//  在获取数据中,以及获取数据为空,或者网络异常的情况下,界面显示对应的提示页面
-//  比如用一张带LOGO的图片,像QQ空间
-//  获取数据成功后,移除该页面
-//
-//
+//  when the status is loading, or the result is without data, or network error,
+//  we can use a simple view over all views to express the status
+//  the view provide a function to reload data
 //
 //
-//  功能:
 //
-//  NoDataView重新加载
+//
+//  Function:
+//
+//  reloadData
 //
 //  Created by Victor Jiang on 6/28/14.
 //  Copyright (c) 2014 Victor Jiang. All rights reserved.
@@ -45,23 +45,23 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  无数据类型
+ *  no data type
  */
 typedef NS_ENUM(NSUInteger, VJNoDataType){
     /**
-     *  正常，不显示无数据view
+     *  normal
      */
     VJNoDataType_Normal,
     /**
-     *  正在加载页
+     *  loading
      */
     VJNoDataType_Loading,
     /**
-     *  无数据页，获取数据为空
+     *  without any data
      */
     VJNoDataType_NoData,
     /**
-     *  网络异常页
+     *  Network Error
      */
     VJNoDataType_NetworkError
 };
@@ -69,29 +69,31 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 @interface UIViewController (VJNoDataView)
 
 /**
- *  是否使能NoDataView，缺省使能
+ *  should enable this module
+ *  default enable
  *
- *  @param enable 使能
+ *  @param enable
  */
 - (void)vj_setNoDataEnable:(BOOL)enable;
 
 /**
- *  设置当前类型
+ *  set current type
  *
- *  @param noDataType 类型
+ *  @param noDataType type
  */
 - (void)vj_setNoDataType:(VJNoDataType)noDataType;
 
 /**
- *  设置不同类型显示的view，有默认的view
+ *  set custom view for different type
+ *  with default view
  *
- *  @param noDataView view
- *  @param noDataType 类型
+ *  @param noDataView custom view, when param is nil, use default view
+ *  @param noDataType type
  */
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType;
 
 /**
- *  重新加载
+ *  reloadData
  */
 - (void)vj_reloadData;
 

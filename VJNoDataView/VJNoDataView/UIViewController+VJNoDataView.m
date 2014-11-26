@@ -16,7 +16,7 @@ static void *vj_networkErrorViewKey;
 
 @interface UIViewController (VJNoDataViewPrivate)
 
-@property (nonatomic, assign) BOOL vj_noDataEnable;
+@property (nonatomic, assign) NSNumber *vj_noDataEnable;
 
 @property (nonatomic, strong) UIView *vj_loadingView;
 @property (nonatomic, strong) UIView *vj_noDataView;
@@ -26,14 +26,14 @@ static void *vj_networkErrorViewKey;
 
 @implementation UIViewController (VJNoDataViewPrivate)
 
-- (BOOL)vj_noDataEnable
+- (NSNumber *)vj_noDataEnable
 {
     return objc_getAssociatedObject(self, &vj_noDataEnableKey);
 }
 
-- (void)setVj_noDataEnable:(BOOL)vj_noDataEnable
+- (void)setVj_noDataEnable:(NSNumber *)vj_noDataEnable
 {
-    objc_setAssociatedObject(self, &vj_noDataEnableKey, @(vj_noDataEnable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &vj_noDataEnableKey, vj_noDataEnable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UIView *)vj_loadingView
@@ -68,11 +68,12 @@ static void *vj_networkErrorViewKey;
 
 @end
 
+#pragma mark - VJNoDataView
 @implementation UIViewController (VJNoDataView)
 
 - (void)vj_noDataViewDidLoad
 {
-    self.vj_noDataEnable = YES;
+    self.vj_noDataEnable = @(YES);
     
     [self makeLoadingView];
     [self makeNoDataView];
@@ -98,7 +99,7 @@ static void *vj_networkErrorViewKey;
 #pragma mark - set method
 - (void)vj_setNoDataEnable:(BOOL)enable
 {
-    self.vj_noDataEnable = enable;
+    self.vj_noDataEnable = @(enable);
     if (!enable) {
         self.vj_loadingView.hidden = YES;
         self.vj_noDataView.hidden = YES;
@@ -108,8 +109,7 @@ static void *vj_networkErrorViewKey;
 
 - (void)vj_setNoDataType:(VJNoDataType)noDataType
 {
-    //如果未使能，则都按正常显示
-    if (!self.vj_noDataEnable) {
+    if (![self.vj_noDataEnable boolValue]) {
         noDataType = VJNoDataType_Normal;
     }
     
@@ -161,21 +161,39 @@ static void *vj_networkErrorViewKey;
             break;
         case VJNoDataType_Loading:
             [self.vj_loadingView removeFromSuperview];
-            [self.view addSubview:noDataView];
-            self.vj_loadingView = noDataView;
-            self.vj_loadingView.hidden = YES;
+            
+            if (noDataView) {
+                [self.view addSubview:noDataView];
+                self.vj_loadingView = noDataView;
+                self.vj_loadingView.hidden = YES;
+            } else {
+                [self makeLoadingView];
+            }
+            
             break;
         case VJNoDataType_NoData:
             [self.vj_noDataView removeFromSuperview];
-            [self.view addSubview:noDataView];
-            self.vj_noDataView = noDataView;
-            self.vj_noDataView.hidden = YES;
+            
+            if (noDataView) {
+                [self.view addSubview:noDataView];
+                self.vj_noDataView = noDataView;
+                self.vj_noDataView.hidden = YES;
+            } else {
+                [self makeNoDataView];
+            }
+            
             break;
         case VJNoDataType_NetworkError:
             [self.vj_networkErrorView removeFromSuperview];
-            [self.view addSubview:noDataView];
-            self.vj_networkErrorView = noDataView;
-            self.vj_networkErrorView.hidden = YES;
+            
+            if (noDataView) {
+                [self.view addSubview:noDataView];
+                self.vj_networkErrorView = noDataView;
+                self.vj_networkErrorView.hidden = YES;
+            } else {
+                [self makeNetworkErrorView];
+            }
+            
             break;
             
         default:
