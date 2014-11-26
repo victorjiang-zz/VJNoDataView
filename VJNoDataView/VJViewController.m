@@ -7,6 +7,7 @@
 //
 
 #import "VJViewController.h"
+#import "VJCustomNoDataView.h"
 
 @interface VJViewController ()
 
@@ -23,7 +24,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
+    __weak typeof(self) weakSelf = self;
+    VJCustomNoDataView *view = [[[NSBundle mainBundle] loadNibNamed:@"VJCustomNoDataView" owner:nil options:nil] objectAtIndex:0];
+    view.refreshBlock = ^void(){
+        [weakSelf vj_reloadData];
+    };
+    [self vj_setNoDataView:view forNoDataType:VJNoDataType_NetworkError];
 }
 
 - (void)didReceiveMemoryWarning

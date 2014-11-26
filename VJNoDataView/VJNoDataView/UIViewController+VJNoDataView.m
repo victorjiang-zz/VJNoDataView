@@ -153,18 +153,29 @@ static void *vj_networkErrorViewKey;
 
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType
 {
+    noDataView.frame = self.view.bounds;
+    
     switch (noDataType) {
         case VJNoDataType_Normal:
             
             break;
         case VJNoDataType_Loading:
+            [self.vj_loadingView removeFromSuperview];
+            [self.view addSubview:noDataView];
             self.vj_loadingView = noDataView;
+            self.vj_loadingView.hidden = YES;
             break;
         case VJNoDataType_NoData:
+            [self.vj_noDataView removeFromSuperview];
+            [self.view addSubview:noDataView];
             self.vj_noDataView = noDataView;
+            self.vj_noDataView.hidden = YES;
             break;
         case VJNoDataType_NetworkError:
+            [self.vj_networkErrorView removeFromSuperview];
+            [self.view addSubview:noDataView];
             self.vj_networkErrorView = noDataView;
+            self.vj_networkErrorView.hidden = YES;
             break;
             
         default:

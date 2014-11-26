@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0CB6511A259B9E00070BAB /* VJCustomNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0CB6501A259B9E00070BAB /* VJCustomNoDataView.m */; };
+		EC0CB6531A259BC200070BAB /* VJCustomNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0CB6521A259BC200070BAB /* VJCustomNoDataView.xib */; };
 		EC7A2384195E5CA30030E002 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7A2383195E5CA30030E002 /* Foundation.framework */; };
 		EC7A2386195E5CA30030E002 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7A2385195E5CA30030E002 /* CoreGraphics.framework */; };
 		EC7A2388195E5CA30030E002 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7A2387195E5CA30030E002 /* UIKit.framework */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC0CB64F1A259B9E00070BAB /* VJCustomNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VJCustomNoDataView.h; sourceTree = "<group>"; };
+		EC0CB6501A259B9E00070BAB /* VJCustomNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VJCustomNoDataView.m; sourceTree = "<group>"; };
+		EC0CB6521A259BC200070BAB /* VJCustomNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VJCustomNoDataView.xib; sourceTree = "<group>"; };
 		EC7A2380195E5CA30030E002 /* VJNoDataView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VJNoDataView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7A2383195E5CA30030E002 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC7A2385195E5CA30030E002 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,6 +128,9 @@
 				EC7A2398195E5CA30030E002 /* Main_iPad.storyboard */,
 				EC7A239B195E5CA30030E002 /* VJViewController.h */,
 				EC7A239C195E5CA30030E002 /* VJViewController.m */,
+				EC0CB64F1A259B9E00070BAB /* VJCustomNoDataView.h */,
+				EC0CB6501A259B9E00070BAB /* VJCustomNoDataView.m */,
+				EC0CB6521A259BC200070BAB /* VJCustomNoDataView.xib */,
 				EC7A23C6195EF3AE0030E002 /* UIViewController+VJNoDataView.h */,
 				EC7A23C7195EF3AE0030E002 /* UIViewController+VJNoDataView.m */,
 				EC7A239E195E5CA30030E002 /* Images.xcassets */,
@@ -239,6 +247,7 @@
 			files = (
 				EC7A239A195E5CA30030E002 /* Main_iPad.storyboard in Resources */,
 				EC7A239F195E5CA30030E002 /* Images.xcassets in Resources */,
+				EC0CB6531A259BC200070BAB /* VJCustomNoDataView.xib in Resources */,
 				EC7A2397195E5CA30030E002 /* Main_iPhone.storyboard in Resources */,
 				EC7A238E195E5CA30030E002 /* InfoPlist.strings in Resources */,
 			);
@@ -262,6 +271,7 @@
 				EC7A2394195E5CA30030E002 /* VJAppDelegate.m in Sources */,
 				EC7A23C9195EF3AE0030E002 /* UIViewController+VJNoDataView.m in Sources */,
 				EC7A239D195E5CA30030E002 /* VJViewController.m in Sources */,
+				EC0CB6511A259B9E00070BAB /* VJCustomNoDataView.m in Sources */,
 				EC7A2390195E5CA30030E002 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
