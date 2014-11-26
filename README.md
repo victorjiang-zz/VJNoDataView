@@ -25,7 +25,7 @@ no data view
 
 ## UIViewController (VJNoDataView)
 
-1. `VJNoDataType`
+1.`VJNoDataType`
 
 ```
 /**
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 };
 ```
 
-2. `vj_setNoDataEnable:enable`
+2.`vj_setNoDataEnable:enable`
 
 ```
 /**
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 - (void)vj_setNoDataEnable:(BOOL)enable;
 ```
 
-3. `vj_setNoDataType:noDataType`
+3.`vj_setNoDataType:noDataType`
 
 ```
 /**
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 - (void)vj_setNoDataType:(VJNoDataType)noDataType;
 ```
 
-4. `vj_setNoDataView:noDataView forNoDataType:noDataType`
+4.`vj_setNoDataView:noDataView forNoDataType:noDataType`
 
 ```
 /**
@@ -85,7 +85,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType;
 ```
 
-5. `vj_reloadData`
+5.`vj_reloadData`
 
 ```
 /**
