@@ -7,9 +7,9 @@
 //  we often use storyboard or xib files to creat views,
 //  many controls have their default value, et. UILabel's default text is "Label"
 //
-//  there are also many network requests in app
+//  there are also many network requests in the app
 //  sometimes the request is slow, when the request is loading, or the request is failed
-//  these controls shown with default value, not our expect data, unfriendly!
+//  these controls shown with default value, out of our expecting data, unfriendly!
 //
 //  there are three types need us to handle
 //

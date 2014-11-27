@@ -9,7 +9,7 @@ no data view
 
 We often use storyboard or xib files to creat views, and many controls have their default value, et. UILabel's default text is "Label".
 
-There are also many network requests in app, sometimes the request is slow. When the request is loading, or the request is failed, these controls shown with default value, not our expect data. unfriendly!
+There are also many network requests in the app, sometimes the request is slow. When the request is loading, or the request is failed, these controls shown with default value, out of our expecting data. unfriendly!
 
 There are three types need us to handle:
 
