@@ -153,7 +153,7 @@ static void *vj_networkErrorViewKey;
 
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType
 {
-    noDataView.frame = self.view.bounds;
+//    noDataView.frame = self.view.bounds;
     
     switch (noDataType) {
         case VJNoDataType_Normal:
@@ -198,6 +198,39 @@ static void *vj_networkErrorViewKey;
             
         default:
             break;
+    }
+    
+    if ((noDataType == VJNoDataType_Loading || noDataType == VJNoDataType_NoData || noDataType == VJNoDataType_NetworkError) && noDataView) {
+        noDataView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:noDataView
+                                                                          attribute:NSLayoutAttributeTop
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self.view
+                                                                          attribute:NSLayoutAttributeTop
+                                                                         multiplier:1
+                                                                           constant:0];
+        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:noDataView
+                                                                              attribute:NSLayoutAttributeLeading
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.view
+                                                                              attribute:NSLayoutAttributeLeading
+                                                                             multiplier:1
+                                                                               constant:0];
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:noDataView
+                                                                             attribute:NSLayoutAttributeBottom
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self.view
+                                                                             attribute:NSLayoutAttributeBottom
+                                                                            multiplier:1
+                                                                              constant:0];
+        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:noDataView
+                                                                               attribute:NSLayoutAttributeTrailing
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.view
+                                                                               attribute:NSLayoutAttributeTrailing
+                                                                              multiplier:1
+                                                                                constant:0];
+        [self.view addConstraints:@[top, leading, bottom, trailing]];
     }
 }
 
