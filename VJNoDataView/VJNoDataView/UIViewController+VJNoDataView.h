@@ -78,6 +78,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 
 /**
  *  set current type
+ *  addSubView on self.view
  *
  *  @param noDataType type
  */

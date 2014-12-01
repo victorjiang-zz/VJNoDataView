@@ -74,13 +74,26 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 ```
 /**
  *  set current type
+ *  addSubView on self.view
  *
  *  @param noDataType type
  */
 - (void)vj_setNoDataType:(VJNoDataType)noDataType;
 ```
 
-4.`vj_setNoDataView:noDataView forNoDataType:noDataType`
+4.`vj_setNoDataType:noDataType onView:view;`
+
+```
+/**
+ *  set current type
+ *
+ *  @param noDataType type
+ *  @param view       noDataView's superView
+ */
+- (void)vj_setNoDataType:(VJNoDataType)noDataType onView:(UIView *)view;
+```
+
+5.`vj_setNoDataView:noDataView forNoDataType:noDataType`
 
 ```
 /**
@@ -93,7 +106,7 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType;
 ```
 
-5.`vj_reloadData`
+6.`vj_reloadData`
 
 ```
 /**
