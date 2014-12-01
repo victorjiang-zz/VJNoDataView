@@ -84,6 +84,14 @@ typedef NS_ENUM(NSUInteger, VJNoDataType){
 - (void)vj_setNoDataType:(VJNoDataType)noDataType;
 
 /**
+ *  set current type
+ *
+ *  @param noDataType type
+ *  @param view       noDataView's superView
+ */
+- (void)vj_setNoDataType:(VJNoDataType)noDataType onView:(UIView *)view;
+
+/**
  *  set custom view for different type
  *  with default view
  *
