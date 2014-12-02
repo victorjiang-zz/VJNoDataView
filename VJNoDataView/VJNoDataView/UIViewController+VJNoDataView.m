@@ -233,36 +233,27 @@ static void *vj_networkErrorViewKey;
             return;
             break;
         case VJNoDataType_Loading:
-//            [self.vj_loadingView removeFromSuperview];
             
             if (noDataView) {
-//                [self.view addSubview:noDataView];
                 self.vj_loadingView = noDataView;
-//                self.vj_loadingView.hidden = YES;
             } else {
                 [self makeLoadingView];
             }
             
             break;
         case VJNoDataType_NoData:
-//            [self.vj_noDataView removeFromSuperview];
             
             if (noDataView) {
-//                [self.view addSubview:noDataView];
                 self.vj_noDataView = noDataView;
-//                self.vj_noDataView.hidden = YES;
             } else {
                 [self makeNoDataView];
             }
             
             break;
         case VJNoDataType_NetworkError:
-//            [self.vj_networkErrorView removeFromSuperview];
             
             if (noDataView) {
-//                [self.view addSubview:noDataView];
                 self.vj_networkErrorView = noDataView;
-//                self.vj_networkErrorView.hidden = YES;
             } else {
                 [self makeNetworkErrorView];
             }
@@ -314,8 +305,6 @@ static void *vj_networkErrorViewKey;
 {
     UIView *loadingView = [[UIView alloc] init];
     [loadingView setBackgroundColor:[UIColor whiteColor]];
-//    [self.view addSubview:loadingView];
-//    loadingView.hidden = YES;
     
     UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [loadingView addSubview:activityIndicatorView];
@@ -334,36 +323,6 @@ static void *vj_networkErrorViewKey;
     activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
     loadingLabel.translatesAutoresizingMaskIntoConstraints = NO;
     helperView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-//    NSLayoutConstraint *loadingViewTop = [NSLayoutConstraint constraintWithItem:loadingView
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                      relatedBy:NSLayoutRelationEqual
-//                                                                         toItem:self.view
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                     multiplier:1
-//                                                                       constant:0];
-//    NSLayoutConstraint *loadingViewLeading = [NSLayoutConstraint constraintWithItem:loadingView
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                          relatedBy:NSLayoutRelationEqual
-//                                                                             toItem:self.view
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                         multiplier:1
-//                                                                           constant:0];
-//    NSLayoutConstraint *loadingViewBottom = [NSLayoutConstraint constraintWithItem:loadingView
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                         relatedBy:NSLayoutRelationEqual
-//                                                                            toItem:self.view
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                        multiplier:1
-//                                                                          constant:0];
-//    NSLayoutConstraint *loadingViewTrailing = [NSLayoutConstraint constraintWithItem:loadingView
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                           relatedBy:NSLayoutRelationEqual
-//                                                                              toItem:self.view
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                          multiplier:1
-//                                                                            constant:0];
-//    [self.view addConstraints:@[loadingViewTop, loadingViewLeading, loadingViewBottom, loadingViewTrailing]];
     
     NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=0)-[activityIndicatorView]-5-[loadingLabel]-(>=0)-|" options:0 metrics:nil views:@{@"activityIndicatorView":activityIndicatorView, @"loadingLabel":loadingLabel}];
     NSLayoutConstraint *constraintLeft = [NSLayoutConstraint constraintWithItem:helperView
@@ -413,8 +372,6 @@ static void *vj_networkErrorViewKey;
 {
     UIView *noDataView = [[UIView alloc] init];
     [noDataView setBackgroundColor:[UIColor whiteColor]];
-//    [self.view addSubview:noDataView];
-//    noDataView.hidden = YES;
     
     UIFont *font = [UIFont systemFontOfSize:15.0f];
     UIColor *textColor = [UIColor darkGrayColor];
@@ -439,36 +396,6 @@ static void *vj_networkErrorViewKey;
     noDataLabel.translatesAutoresizingMaskIntoConstraints = NO;
     refreshButton.translatesAutoresizingMaskIntoConstraints = NO;
     helperView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-//    NSLayoutConstraint *noDataViewTop = [NSLayoutConstraint constraintWithItem:noDataView
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                      relatedBy:NSLayoutRelationEqual
-//                                                                         toItem:self.view
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                     multiplier:1
-//                                                                       constant:0];
-//    NSLayoutConstraint *noDataViewLeading = [NSLayoutConstraint constraintWithItem:noDataView
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                          relatedBy:NSLayoutRelationEqual
-//                                                                             toItem:self.view
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                         multiplier:1
-//                                                                           constant:0];
-//    NSLayoutConstraint *noDataViewBottom = [NSLayoutConstraint constraintWithItem:noDataView
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                         relatedBy:NSLayoutRelationEqual
-//                                                                            toItem:self.view
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                        multiplier:1
-//                                                                          constant:0];
-//    NSLayoutConstraint *noDataViewTrailing = [NSLayoutConstraint constraintWithItem:noDataView
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                           relatedBy:NSLayoutRelationEqual
-//                                                                              toItem:self.view
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                          multiplier:1
-//                                                                            constant:0];
-//    [self.view addConstraints:@[noDataViewTop, noDataViewLeading, noDataViewBottom, noDataViewTrailing]];
     
     NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[noDataLabel]-5-[refreshButton]-(>=0)-|" options:0 metrics:nil views:@{@"noDataLabel":noDataLabel, @"refreshButton":refreshButton}];
     NSLayoutConstraint *constraintTop = [NSLayoutConstraint constraintWithItem:helperView
@@ -518,8 +445,6 @@ static void *vj_networkErrorViewKey;
 {
     UIView *networkErrorView = [[UIView alloc] init];
     [networkErrorView setBackgroundColor:[UIColor whiteColor]];
-//    [self.view addSubview:networkErrorView];
-//    networkErrorView.hidden = YES;
     
     UIFont *font = [UIFont systemFontOfSize:15.0f];
     UIColor *textColor = [UIColor darkGrayColor];
@@ -544,36 +469,6 @@ static void *vj_networkErrorViewKey;
     networkErrorLabel.translatesAutoresizingMaskIntoConstraints = NO;
     refreshButton.translatesAutoresizingMaskIntoConstraints = NO;
     helperView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-//    NSLayoutConstraint *networkErrorViewTop = [NSLayoutConstraint constraintWithItem:networkErrorView
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                      relatedBy:NSLayoutRelationEqual
-//                                                                         toItem:self.view
-//                                                                      attribute:NSLayoutAttributeTop
-//                                                                     multiplier:1
-//                                                                       constant:0];
-//    NSLayoutConstraint *networkErrorViewLeading = [NSLayoutConstraint constraintWithItem:networkErrorView
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                          relatedBy:NSLayoutRelationEqual
-//                                                                             toItem:self.view
-//                                                                          attribute:NSLayoutAttributeLeading
-//                                                                         multiplier:1
-//                                                                           constant:0];
-//    NSLayoutConstraint *networkErrorViewBottom = [NSLayoutConstraint constraintWithItem:networkErrorView
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                         relatedBy:NSLayoutRelationEqual
-//                                                                            toItem:self.view
-//                                                                         attribute:NSLayoutAttributeBottom
-//                                                                        multiplier:1
-//                                                                          constant:0];
-//    NSLayoutConstraint *networkErrorViewTrailing = [NSLayoutConstraint constraintWithItem:networkErrorView
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                           relatedBy:NSLayoutRelationEqual
-//                                                                              toItem:self.view
-//                                                                           attribute:NSLayoutAttributeTrailing
-//                                                                          multiplier:1
-//                                                                            constant:0];
-//    [self.view addConstraints:@[networkErrorViewTop, networkErrorViewLeading, networkErrorViewBottom, networkErrorViewTrailing]];
     
     NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[networkErrorLabel]-5-[refreshButton]-(>=0)-|" options:0 metrics:nil views:@{@"networkErrorLabel":networkErrorLabel, @"refreshButton":refreshButton}];
     NSLayoutConstraint *constraintTop = [NSLayoutConstraint constraintWithItem:helperView
