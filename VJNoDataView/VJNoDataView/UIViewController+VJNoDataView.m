@@ -192,8 +192,15 @@ static void *vj_networkErrorViewKey;
             break;
     }
     
+//set noDataView's frame is view's bounds, when not use autolayout
+    noDataView.frame = view.bounds;
+    
     [view addSubview:noDataView];
     noDataView.clipsToBounds = YES;
+    
+//autolayout not work in iOS7 when view is subClass of scrollView
+//
+/*
     noDataView.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:noDataView
                                                            attribute:NSLayoutAttributeTop
@@ -224,6 +231,7 @@ static void *vj_networkErrorViewKey;
                                                              multiplier:1
                                                                constant:0];
     [view addConstraints:@[top, leading, width, height]];
+ */
 }
 
 - (void)vj_setNoDataView:(UIView *)noDataView forNoDataType:(VJNoDataType)noDataType
@@ -262,41 +270,6 @@ static void *vj_networkErrorViewKey;
             
         default:
             break;
-    }
-    
-    return;
-    
-    if ((noDataType == VJNoDataType_Loading || noDataType == VJNoDataType_NoData || noDataType == VJNoDataType_NetworkError) && noDataView) {
-        noDataView.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:noDataView
-                                                                          attribute:NSLayoutAttributeTop
-                                                                          relatedBy:NSLayoutRelationEqual
-                                                                             toItem:self.view
-                                                                          attribute:NSLayoutAttributeTop
-                                                                         multiplier:1
-                                                                           constant:0];
-        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:noDataView
-                                                                              attribute:NSLayoutAttributeLeading
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self.view
-                                                                              attribute:NSLayoutAttributeLeading
-                                                                             multiplier:1
-                                                                               constant:0];
-        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:noDataView
-                                                                             attribute:NSLayoutAttributeBottom
-                                                                             relatedBy:NSLayoutRelationEqual
-                                                                                toItem:self.view
-                                                                             attribute:NSLayoutAttributeBottom
-                                                                            multiplier:1
-                                                                              constant:0];
-        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:noDataView
-                                                                               attribute:NSLayoutAttributeTrailing
-                                                                               relatedBy:NSLayoutRelationEqual
-                                                                                  toItem:self.view
-                                                                               attribute:NSLayoutAttributeTrailing
-                                                                              multiplier:1
-                                                                                constant:0];
-        [self.view addConstraints:@[top, leading, bottom, trailing]];
     }
 }
 
@@ -384,7 +357,6 @@ static void *vj_networkErrorViewKey;
     
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [refreshButton setTitle:NSLocalizedString(@"Tap & Reload", nil) forState:UIControlStateNormal];
-//    [refreshButton setTitleColor:textColor forState:UIControlStateNormal];
     refreshButton.titleLabel.font = font;
     [refreshButton addTarget:self action:@selector(vj_reloadData) forControlEvents:UIControlEventTouchUpInside];
     [noDataView addSubview:refreshButton];
@@ -457,7 +429,6 @@ static void *vj_networkErrorViewKey;
     
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [refreshButton setTitle:NSLocalizedString(@"Tap & Reload", nil) forState:UIControlStateNormal];
-//    [refreshButton setTitleColor:textColor forState:UIControlStateNormal];
     refreshButton.titleLabel.font = font;
     [refreshButton addTarget:self action:@selector(vj_reloadData) forControlEvents:UIControlEventTouchUpInside];
     [networkErrorView addSubview:refreshButton];
